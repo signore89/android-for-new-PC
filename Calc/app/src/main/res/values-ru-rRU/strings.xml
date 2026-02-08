@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Калькулятор</string>
+    <string name="main_name">Калькулятор</string>
+    <string name="first_number">Первое число:</string>
+    <string name="enter_first_number">Введите первое число</string>
+    <string name="enter_second_number">Введите второе число</string>
+    <string name="select_operation">Выберите операцию</string>
+    <string name="result">Результат</string>
+    <string name="clear_all">Очистить</string>
+    <string name="please_enter_both_numbers">Пожалуйста введите оба числа</string>
+</resources>
