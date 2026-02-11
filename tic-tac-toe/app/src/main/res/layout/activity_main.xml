@@ -69,6 +69,67 @@
             app:cornerRadius="20dp"
             android:textSize="18sp"
             android:text="@string/start_game" />
+        <Button
+            android:id="@+id/startGameUsBotButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:cornerRadius="20dp"
+            android:textSize="18sp"
+            android:text="@string/start_game_with_bot" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/difficulty_of_playing_with_bot"
+            android:textSize="16sp"
+            android:textColor="@color/blue"
+            android:layout_marginBottom="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:padding="8dp"
+            android:background="@drawable/white_box"
+            android:backgroundTint="@color/light_gray">
+
+            <RadioButton
+                android:id="@+id/radioEasy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Easy"
+                android:textSize="14sp"
+                android:layout_marginEnd="16dp"
+                android:buttonTint="@color/blue"
+                android:textColor="@color/blue"/>
+
+            <RadioButton
+                android:id="@+id/radioMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium"
+                android:textSize="14sp"
+                android:layout_marginEnd="16dp"
+                android:buttonTint="@color/blue"
+                android:textColor="@color/blue"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radioHard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hard"
+                android:textSize="14sp"
+                android:buttonTint="@color/blue"
+            android:textColor="@color/blue"/>
+
+        </RadioGroup>
+
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
