@@ -7,21 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<EditText
-    android:id="@+id/editText"
-    android:layout_width="180dp"
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:hint="Введите Email"
-    android:inputType="text"
+    android:background="#efefef"
+    android:text="First"
+    android:textSize="30sp"
+    app:layout_constraintRight_toLeftOf="@id/textView2"
+    app:layout_constraintHorizontal_chainStyle="packed"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Отправить"
-        app:layout_constraintLeft_toRightOf="@id/editText"
-        app:layout_constraintTop_toBottomOf="@id/editText"/>
+        android:background="#e0e0e0"
+        android:text="Second"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/textView1"
+        app:layout_constraintRight_toLeftOf="@id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#efefef"
+        android:text="Third"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/textView2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

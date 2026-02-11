@@ -1,6 +1,9 @@
 package com.example.myfirstappandroid;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,20 +18,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
         ConstraintLayout constraintLayout = new ConstraintLayout(this);
-        TextView textView = new TextView(this);
-        textView.setBackgroundColor(0xFFCC33FF);
-        textView.setText("Hello Android");
-        textView.setTextSize(30);
+        EditText editText = new EditText(this);
+        editText.setHint("Введите Email");
+        editText.setId(View.generateViewId());
+        Button button = new Button(this);
+        button.setText("Отправить");
+        button.setId(View.generateViewId());
 
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams
-                (ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(60,50,60,50);
-        layoutParams.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
-        layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
-        textView.setLayoutParams(layoutParams);
-        textView.setPadding(40,40,40,40);
-        constraintLayout.addView(textView);
-        setContentView(constraintLayout);
+        ConstraintLayout.LayoutParams editTextLayout = new ConstraintLayout.LayoutParams
+                (ConstraintLayout.LayoutParams.WRAP_CONTENT , ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        editTextLayout.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
+        editTextLayout.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+        editTextLayout.rightToLeft = button.getId();
+        editText.setLayoutParams(editTextLayout);
+        constraintLayout.addView(editText);
+
+        ConstraintLayout.LayoutParams buttonLayout = new ConstraintLayout.LayoutParams
+                (ConstraintLayout.LayoutParams.WRAP_CONTENT , ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        buttonLayout.leftToRight = editText.getId();
+        buttonLayout.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+        button.setLayoutParams(buttonLayout);
+        constraintLayout.addView(button);
+
+        setContentView(constraintLayout);fdfd
     }
 }
