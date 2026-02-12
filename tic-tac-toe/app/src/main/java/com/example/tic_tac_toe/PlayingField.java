@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PlayingField extends AppCompatActivity {
 
@@ -38,6 +39,8 @@ public class PlayingField extends AppCompatActivity {
 
     private int currentScoreOne = 0;
     private int currentScoreTwo = 0;
+    private String difficulty;
+    private boolean vsBoost = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class PlayingField extends AppCompatActivity {
 
         playerOneName = findViewById(R.id.playerOneName);
         playerTwoName = findViewById(R.id.playerTwoName);
+        vsBoost = getIntent().getBooleanExtra("vsBoost",false);
+        difficulty = getIntent().getStringExtra("difficulty");
 
         combinationList.add(new int[]{0,1,2});
         combinationList.add(new int[]{3,4,5});
@@ -221,6 +226,7 @@ public class PlayingField extends AppCompatActivity {
     private void changePlayerTurn(int currentPlayerTurn){
         activePlayer = currentPlayerTurn;
 
+
         LinearLayout playerOneLayoutOuter = findViewById(R.id.playerOneLinearLayout);
         LinearLayout playerTwoLayoutOuter = findViewById(R.id.playerTwoLayoutOuter);
 
@@ -230,6 +236,9 @@ public class PlayingField extends AppCompatActivity {
         } else {
             playerOneLayoutOuter.setBackgroundResource(R.drawable.white_box);
             playerTwoLayoutOuter.setBackgroundResource(R.drawable.black_border);
+        }
+        if(vsBoost && activePlayer == 2){
+            botMove(difficulty);
         }
     }
 
@@ -265,5 +274,55 @@ public class PlayingField extends AppCompatActivity {
         image7.setImageResource(R.drawable.white_box);
         image8.setImageResource(R.drawable.white_box);
         image9.setImageResource(R.drawable.white_box);
+    }
+
+    private void botMove(String difficulty){
+        if (activePlayer != 2) return;
+        int number = 0;
+        Random random = new Random();
+        switch (difficulty){
+            case "Easy":
+                do{
+                   number = random.nextInt(boxPositions.length);
+                }while(!isBoxSelectable(number));
+                ImageView selectedBox = getImageViewByPosition(number);
+                performAction(selectedBox,number);
+            break;
+            case "Medium":
+                number = getMediumMove();
+                ImageView selectedBoxMedium = getImageViewByPosition(number);
+                performAction(selectedBoxMedium,number);
+                break;
+            case "Hard":
+                number = getHardMove();
+                ImageView selectedBoxHard = getImageViewByPosition(number);
+                performAction(selectedBoxHard,number);
+                break;
+        }
+    }
+
+    private int getHardMove() {
+        //Todo
+        return 0;
+    }
+
+    private int getMediumMove() {
+
+        return 0;
+    }
+
+    private ImageView getImageViewByPosition(int position) {
+        switch(position) {
+            case 0: return image1;
+            case 1: return image2;
+            case 2: return image3;
+            case 3: return image4;
+            case 4: return image5;
+            case 5: return image6;
+            case 6: return image7;
+            case 7: return image8;
+            case 8: return image9;
+            default: return null;
+        }
     }
 }
