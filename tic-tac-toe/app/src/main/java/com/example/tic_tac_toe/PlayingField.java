@@ -279,12 +279,9 @@ public class PlayingField extends AppCompatActivity {
     private void botMove(String difficulty){
         if (activePlayer != 2) return;
         int number = 0;
-        Random random = new Random();
         switch (difficulty){
             case "Easy":
-                do{
-                   number = random.nextInt(boxPositions.length);
-                }while(!isBoxSelectable(number));
+                number = getEasyMove();
                 ImageView selectedBox = getImageViewByPosition(number);
                 performAction(selectedBox,number);
             break;
@@ -301,14 +298,53 @@ public class PlayingField extends AppCompatActivity {
         }
     }
 
+    private int getEasyMove(){
+        Random random = new Random();
+        int number = 0;
+        do{
+            number = random.nextInt(boxPositions.length);
+        }while(!isBoxSelectable(number));
+        return number;
+    }
+
     private int getHardMove() {
         //Todo
         return 0;
     }
 
     private int getMediumMove() {
+        int winningMove = 4;
+        int blockingMove = 4;
+        winningMove = findWinningMove(2);
+        if(winningMove != 4){
+            return winningMove;
+        }
 
-        return 0;
+        blockingMove = findWinningMove(1);
+        if(blockingMove != 4){
+            return blockingMove;
+        }
+        return getEasyMove();
+    }
+
+    private int findWinningMove(int activePlayer) {
+        for (int i = 0; i < combinationList.size();i++){
+            int[] combination = combinationList.get(i);
+            int countPlayer = 0;
+            int emptyPosition = 4;
+            for (int pos :
+                    combination) {
+                if (boxPositions[pos] == activePlayer) {
+                    countPlayer++;
+                } else if (boxPositions[pos] == 0) {
+                    emptyPosition = pos;
+                }
+            }
+            if (countPlayer == 2 && emptyPosition != 4){
+                return emptyPosition;
+            }
+        }
+        return 4;
     }
 
     private ImageView getImageViewByPosition(int position) {
