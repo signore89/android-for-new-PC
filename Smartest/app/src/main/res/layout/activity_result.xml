@@ -6,34 +6,50 @@
     android:gravity="center"
     android:background="@color/background"
     android:padding="20dp">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SMARTEST"
-        android:textSize="48sp"
+        android:text="Игра завершена!"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/primary"
         android:layout_marginBottom="50dp"/>
+
     <TextView
+        android:id="@+id/tvFinalScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Проверь свои знания!"
+        android:text="Ваш счет: 0 из 50"
+        android:textSize="24sp"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/tvResultMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сообщение"
         android:textSize="18sp"
         android:textColor="@color/text_secondary"
+        android:gravity="center"
         android:layout_marginBottom="100dp"/>
+
     <Button
-        android:id="@+id/btnStart"
+        android:id="@+id/btnPlayAgain"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:text="Начать игру"
+        android:text="Играть снова"
         android:textSize="18sp"
         android:backgroundTint="@color/primary"
         android:layout_marginBottom="20dp"/>
+
     <Button
-        android:id="@+id/btnExit"
+        android:id="@+id/btnMainMenu"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:text="Выход"
+        android:text="Главное меню"
         android:textSize="18sp"
         android:backgroundTint="@color/secondary"/>
+
 </LinearLayout>
